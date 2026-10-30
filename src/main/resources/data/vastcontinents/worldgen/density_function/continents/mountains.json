@@ -1,0 +1,136 @@
+{
+  "type": "minecraft:cache",
+  "input": {
+    "type": "minecraft:mul",
+    "left": {
+      "type": "minecraft:mul",
+      "left": {
+        "type": "minecraft:mul",
+        "left": {
+          "type": "minecraft:clamp",
+          "input": {
+            "type": "minecraft:mul",
+            "left": {
+              "type": "minecraft:sub",
+              "left": "vastcontinents:continents/mask",
+              "right": 0.1
+            },
+            "right": 8.333333333333334
+          },
+          "min": 0.0,
+          "max": 1.0
+        },
+        "right": {
+          "type": "minecraft:clamp",
+          "input": {
+            "type": "minecraft:mul",
+            "left": {
+              "type": "minecraft:add",
+              "left": {
+                "type": "minecraft:noise",
+                "noise": "vastcontinents:mountain_regions",
+                "shift_x": "minecraft:shift_x",
+                "shift_z": "minecraft:shift_z",
+                "xz_scale": 0.25,
+                "y_scale": 0.0
+              },
+              "right": 0.1
+            },
+            "right": 5.0
+          },
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "right": {
+        "type": "minecraft:clamp",
+        "input": {
+          "type": "minecraft:mul",
+          "left": {
+            "type": "minecraft:sub",
+            "left": {
+              "type": "minecraft:slice",
+              "axis": "y",
+              "coordinate": 0,
+              "input": {
+                "type": "minecraft:distance_to_point",
+                "point": [
+                  0,
+                  0,
+                  0
+                ],
+                "metric": "euclidean"
+              }
+            },
+            "right": 400
+          },
+          "right": 0.00125
+        },
+        "min": 0.0,
+        "max": 1.0
+      }
+    },
+    "right": {
+      "type": "minecraft:mul",
+      "left": {
+        "type": "minecraft:square",
+        "input": {
+          "type": "minecraft:clamp",
+          "input": {
+            "type": "minecraft:sub",
+            "left": 1.0,
+            "right": {
+              "type": "minecraft:mul",
+              "left": {
+                "type": "minecraft:abs",
+                "input": {
+                  "type": "minecraft:noise",
+                  "noise": "vastcontinents:mountain_ridges",
+                  "shift_x": "minecraft:shift_x",
+                  "shift_z": "minecraft:shift_z",
+                  "xz_scale": 0.25,
+                  "y_scale": 0.0
+                }
+              },
+              "right": 1.7
+            }
+          },
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "right": {
+        "type": "minecraft:add",
+        "left": 0.7,
+        "right": {
+          "type": "minecraft:mul",
+          "left": 0.3,
+          "right": {
+            "type": "minecraft:clamp",
+            "input": {
+              "type": "minecraft:sub",
+              "left": 1.0,
+              "right": {
+                "type": "minecraft:mul",
+                "left": {
+                  "type": "minecraft:abs",
+                  "input": {
+                    "type": "minecraft:noise",
+                    "noise": "vastcontinents:mountain_peaks",
+                    "shift_x": "minecraft:shift_x",
+                    "shift_z": "minecraft:shift_z",
+                    "xz_scale": 0.25,
+                    "y_scale": 0.0
+                  }
+                },
+                "right": 1.7
+              }
+            },
+            "min": 0.0,
+            "max": 1.0
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "fr.nilsm.vastcontinents.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"WorldDimensionsMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

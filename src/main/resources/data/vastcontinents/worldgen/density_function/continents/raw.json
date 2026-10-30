@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:add",
+  "left": {
+    "type": "minecraft:noise",
+    "noise": "minecraft:continentalness",
+    "shift_x": "minecraft:shift_x",
+    "shift_z": "minecraft:shift_z",
+    "xz_scale": 0.25,
+    "y_scale": 0.0
+  },
+  "right": {
+    "type": "minecraft:spline",
+    "spline": {
+      "coordinate": "vastcontinents:continents/mask",
+      "points": [
+        {
+          "location": -0.1,
+          "value": -0.85,
+          "derivative": 0.0
+        },
+        {
+          "location": 0.1,
+          "value": 0.5,
+          "derivative": 0.0
+        }
+      ]
+    }
+  }
+}

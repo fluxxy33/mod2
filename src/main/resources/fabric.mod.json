@@ -1,0 +1,21 @@
+{
+	"schemaVersion": 1,
+	"id": "vastcontinents",
+	"version": "${version}",
+	"name": "Vast Continents",
+	"description": "Ajoute un type de monde avec de vrais continents, de vrais océans et des chaînes de montagnes géantes, jusqu'à y=1000.",
+	"authors": [
+		"nilsm"
+	],
+	"license": "All-Rights-Reserved",
+	"environment": "*",
+	"mixins": [
+		"vastcontinents.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

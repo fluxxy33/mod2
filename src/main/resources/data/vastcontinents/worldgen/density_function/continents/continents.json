@@ -1,0 +1,54 @@
+{
+  "type": "minecraft:cache",
+  "input": {
+    "type": "minecraft:add",
+    "left": {
+      "type": "minecraft:spline",
+      "spline": {
+        "coordinate": "vastcontinents:continents/raw",
+        "points": [
+          {
+            "location": -1.5,
+            "value": -1.02,
+            "derivative": 0.0
+          },
+          {
+            "location": -0.45,
+            "value": -0.45,
+            "derivative": 1.0
+          },
+          {
+            "location": 1.0,
+            "value": 1.0,
+            "derivative": 0.0
+          }
+        ]
+      }
+    },
+    "right": {
+      "type": "minecraft:mul",
+      "left": -0.2,
+      "right": {
+        "type": "minecraft:clamp",
+        "input": {
+          "type": "minecraft:mul",
+          "left": {
+            "type": "minecraft:add",
+            "left": {
+              "type": "minecraft:noise",
+              "noise": "vastcontinents:mushroom_spots",
+              "shift_x": "minecraft:shift_x",
+              "shift_z": "minecraft:shift_z",
+              "xz_scale": 0.25,
+              "y_scale": 0.0
+            },
+            "right": -0.72
+          },
+          "right": 8.0
+        },
+        "min": 0.0,
+        "max": 1.0
+      }
+    }
+  }
+}

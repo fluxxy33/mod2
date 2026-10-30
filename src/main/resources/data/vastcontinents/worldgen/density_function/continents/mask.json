@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:add",
+  "left": {
+    "type": "minecraft:add",
+    "left": {
+      "type": "minecraft:noise",
+      "noise": "vastcontinents:continent_mask",
+      "shift_x": "minecraft:shift_x",
+      "shift_z": "minecraft:shift_z",
+      "xz_scale": 0.25,
+      "y_scale": 0.0
+    },
+    "right": -0.04
+  },
+  "right": {
+    "type": "minecraft:mul",
+    "left": 0.75,
+    "right": {
+      "type": "minecraft:clamp",
+      "input": {
+        "type": "minecraft:sub",
+        "left": 1.0,
+        "right": {
+          "type": "minecraft:mul",
+          "left": {
+            "type": "minecraft:slice",
+            "axis": "y",
+            "coordinate": 0,
+            "input": {
+              "type": "minecraft:distance_to_point",
+              "point": [
+                0,
+                0,
+                0
+              ],
+              "metric": "euclidean"
+            }
+          },
+          "right": 0.00016666666666666666
+        }
+      },
+      "min": 0.0,
+      "max": 1.0
+    }
+  }
+}

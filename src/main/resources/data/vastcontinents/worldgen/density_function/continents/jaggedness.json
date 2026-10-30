@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:cache",
+  "input": {
+    "type": "minecraft:add",
+    "left": "vastcontinents:continents/base_jaggedness",
+    "right": {
+      "type": "minecraft:mul",
+      "left": 1.2,
+      "right": "vastcontinents:continents/mountains"
+    }
+  }
+}

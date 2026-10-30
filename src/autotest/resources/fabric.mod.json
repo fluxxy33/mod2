@@ -1,0 +1,16 @@
+{
+	"schemaVersion": 1,
+	"id": "vastcontinents_autotest",
+	"version": "1.0.0",
+	"name": "Vast Continents Autotest",
+	"description": "Outil de développement : crée un monde, le vérifie et prend des captures.",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"fr.nilsm.vastcontinents.autotest.WorldAutotest"
+		]
+	},
+	"depends": {
+		"vastcontinents": "*"
+	}
+}
