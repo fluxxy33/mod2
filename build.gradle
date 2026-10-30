@@ -1,0 +1,67 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+// Development tools: never packed in the mod jar.
+sourceSets {
+	maps {
+		compileClasspath += sourceSets.main.compileClasspath
+		runtimeClasspath += sourceSets.main.runtimeClasspath
+	}
+	autotest {
+		compileClasspath += sourceSets.main.compileClasspath
+		runtimeClasspath += sourceSets.main.runtimeClasspath
+	}
+}
+
+loom {
+	mods {
+		"vastcontinents" {
+			sourceSet sourceSets.main
+		}
+		"vastcontinents_autotest" {
+			sourceSet sourceSets.autotest
+		}
+	}
+
+	// ./gradlew runAutotest -Pseed=2 : creates a world, checks it, takes screenshots in run/screenshots.
+	runs {
+		autotest {
+			client()
+			source sourceSets.autotest
+			vmArg "-Dvastcontinents.autotest.seed=${providers.gradleProperty('seed').getOrElse('2')}"
+			vmArg "-Dvastcontinents.autotest.world=${providers.gradleProperty('world').getOrElse('vastcontinents:continents')}"
+		}
+	}
+}
+
+dependencies {
+	// To change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// The mod itself is only data, but Fabric API is what loads it as a built-in data pack.
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+// ./gradlew exportMaps -Pseeds=1,2,3 : vanilla, large biomes and Vast Continents maps in build/maps.
+tasks.register('exportMaps', JavaExec) {
+	dependsOn 'processResources'
+	group = 'vastcontinents'
+	classpath = sourceSets.maps.runtimeClasspath
+	mainClass = 'fr.nilsm.vastcontinents.maps.ContinentMaps'
+	maxHeapSize = '4G'
+	args layout.buildDirectory.dir('resources/main').get().asFile.path,
+			layout.buildDirectory.dir('maps').get().asFile.path,
+			providers.gradleProperty('seeds').getOrElse('1,2,3,4,5,6')
+	jvmArgs '-Djava.awt.headless=true'
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
